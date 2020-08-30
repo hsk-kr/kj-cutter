@@ -51,6 +51,7 @@ $open-navbar-btn-visible-x: 20px;
   display: flex;
   flex-direction: column;
   white-space: nowrap;
+  box-sizing: border-box;
 
   .navbar-open-btn {
     position: absolute;
