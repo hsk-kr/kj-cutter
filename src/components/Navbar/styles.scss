@@ -1,0 +1,151 @@
+$navbar-width: 300px;
+$open-navbar-btn-invisible-x: -100px;
+$open-navbar-btn-visible-x: 20px;
+
+@keyframes closeNavbarAnim {
+  from {
+    min-width: $navbar-width;
+    width: $navbar-width;
+  }
+  to {
+    min-width: 0px;
+    width: 0px;
+  }
+}
+
+@keyframes openNavbarAnim {
+  from {
+    min-width: 0px;
+    width: 0px;
+  }
+  to {
+    min-width: $navbar-width;
+    width: $navbar-width;
+  }
+}
+
+@keyframes openBtnShownUpAnim {
+  from {
+    left: $open-navbar-btn-invisible-x;
+  }
+  to {
+    left: $open-navbar-btn-visible-x;
+  }
+}
+
+@keyframes openBtnHideAnim {
+  from {
+    left: $open-navbar-btn-visible-x;
+  }
+  to {
+    left: $open-navbar-btn-invisible-x;
+  }
+}
+
+.navbar {
+  min-width: $navbar-width;
+  width: $navbar-width;
+  height: 100vh;
+  border-right: 1px solid gray;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  white-space: nowrap;
+
+  .navbar-open-btn {
+    position: absolute;
+    z-index: 1;
+    left: $open-navbar-btn-invisible-x;
+    top: 20px;
+    width: 60px;
+    height: 60px;
+    background-color: gray;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+      cursor: pointer;
+      opacity: 0.7;
+    }
+  }
+
+  &.opened {
+    animation: openNavbarAnim 0.5s;
+    .navbar-open-btn {
+      animation: openBtnHideAnim 0.5s;
+    }
+  }
+
+  &.closed {
+    width: 0px;
+    min-width: 0px;
+    animation: closeNavbarAnim 0.5s;
+
+    .navbar-open-btn {
+      animation: openBtnShownUpAnim 0.5s;
+      left: $open-navbar-btn-visible-x;
+    }
+  }
+
+  .profile {
+    position: relative;
+    $profile-height: 300px;
+    height: $profile-height;
+    background-color: #ececec;
+    color: black;
+
+    .profile-image {
+      width: 100px;
+      height: 100px;
+      object-fit: fill;
+    }
+
+    .profile-detail {
+      width: 100%;
+      height: 100%;
+      box-sizing: border-box;
+      padding-right: 50px;
+    }
+
+    .navbar-close-btn {
+      position: absolute;
+      height: $profile-height;
+      width: 50px;
+      top: 0px;
+      right: 0px;
+
+      svg {
+        &:hover {
+          opacity: 0.7;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  .works {
+    height: 100px;
+    background-color: yellow;
+    color: white;
+  }
+
+  .new-work {
+    height: 100px;
+    background-color: purple;
+    color: white;
+  }
+
+  .settings {
+    height: 100px;
+    background-color: pink;
+    color: white;
+  }
+
+  .for-future {
+    flex: 1;
+    color: white;
+    background-color: wheat;
+  }
+}
